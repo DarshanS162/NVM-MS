@@ -1,12 +1,18 @@
-import { View, Text, SafeAreaView } from 'react-native'
+import { View, Text } from 'react-native'
 import React from 'react'
 
-const home = () => {
+const Home = () => {
   return (
-    <SafeAreaView>
-      <Text>this is home screen </Text>
-    </SafeAreaView>
+    <View>
+    <Text>Home</Text>
+    <Text>Home</Text>
+    <Text>Home</Text>
+    <Text>Home</Text>
+    <Text>Home</Text>
+    <Text>Home</Text>
+      <Text>Home</Text>
+    </View>
   )
 }
 
-export default home
+export default Home
