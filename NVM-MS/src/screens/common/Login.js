@@ -27,7 +27,7 @@ const Login = ( {navigation}) => {
                         <CustomTextAndInput type="input" style={styles.inputField} placeholder='Enter Password' />
                     </View>
 
-                    <TouchableOpacity style={styles.signUpButton}>
+                    <TouchableOpacity style={styles.signUpButton} onPress={ () => {navigation.navigate('Teachers')}}>
                         <CustomTextAndInput type="text" style={styles.signUpText}>Sign in</CustomTextAndInput>
                     </TouchableOpacity>
 
