@@ -12,7 +12,6 @@ const CustomTextAndInput = ({ type, children, fontStyle = 'regular', placeholder
   if (!fontsLoaded) {
     return (
       <View style={[styles.loadingContainer, style]}>
-        <ActivityIndicator size="large" />
       </View>
     );
   }

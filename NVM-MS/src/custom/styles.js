@@ -2,7 +2,7 @@ import { Platform, StatusBar, StyleSheet } from 'react-native';
 
 
 const COLORS = {
-  primary: '#003102',
+  primary: '#8569F4',
   secondary: '#2ecc71',
   background: '#ffffff',
   text: '#333333',
