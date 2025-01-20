@@ -1,26 +1,42 @@
 import React, { useState } from 'react';
-import { SafeAreaView, StyleSheet, Platform, StatusBar, Image, View, TextInput } from 'react-native';
+import { SafeAreaView, StyleSheet, Platform, StatusBar, Image, View, TextInput, TouchableOpacity, Text } from 'react-native';
 import { customStyle, COLORS } from '../../custom/styles';
 import loginImage from "../../../assets/login.png"
 import CustomTextAndInput from "../../customComponents/CustomTextAndInput"
-import { Ionicons } from '@expo/vector-icons'; // Import FontAwesome
+import { Ionicons, SimpleLineIcons } from '@expo/vector-icons';
 
-const Login = () => {
+const Login = ( {navigation}) => {
     const [text, onChangeText] = useState('');
     return (
         <SafeAreaView style={customStyle.container}>
-            <View style={{ padding: 20 }}>
+            <View style={{ padding: 20, flex: 1 }}>
                 <View style={styles.imageContainer}>
                     <Image source={loginImage} style={styles.image} />
                 </View>
-
+                
                 <CustomTextAndInput type="text" style={styles.loginText}>Login</CustomTextAndInput>
                 <CustomTextAndInput type="text">Please Sign in to continue</CustomTextAndInput>
                 <View style={styles.inputContainer}>
-                <Ionicons name="mail-outline" size={50} color="#f39c12" /> 
-                    <CustomTextAndInput type="input" style={styles.inputField} placeholder='Enter Email' onChangeText={onChangeText} value={text} />
-                    <CustomTextAndInput type="input" style={styles.inputField} placeholder='Enter Password' />
+                    <View style={styles.inputBox}>
+                        <Ionicons name="mail-outline" size={25} color="#292929" />
+                        <CustomTextAndInput type="input" style={styles.inputField} placeholder='Enter Email' onChangeText={onChangeText} value={text} />
+                    </View>
 
+                    <View style={styles.inputBox}>
+                        <SimpleLineIcons name="lock" size={24} color="black" />
+                        <CustomTextAndInput type="input" style={styles.inputField} placeholder='Enter Password' />
+                    </View>
+
+                    <TouchableOpacity style={styles.signUpButton}>
+                        <CustomTextAndInput type="text" style={styles.signUpText}>Sign in</CustomTextAndInput>
+                    </TouchableOpacity>
+
+                    <View style={styles.dtHvAcc}>
+                        <CustomTextAndInput type="text">Don't have account? </CustomTextAndInput>
+                        <TouchableOpacity onPress={ () => {navigation.navigate('Registration')}}>
+                            <CustomTextAndInput type='text' style={{ fontSize: 14, fontWeight: 'bold' }}>Sign up</CustomTextAndInput>
+                        </TouchableOpacity>
+                    </View>
                 </View>
             </View>
         </SafeAreaView>
@@ -29,31 +45,54 @@ const Login = () => {
 
 const styles = StyleSheet.create({
     image: {
-        width: 270,
-        height: 270,
+        width: 300,
+        height: 300,
         alignSelf: "center",
     },
     imageContainer: {
         padding: 20,
     },
+
     loginText: {
         fontSize: 30,
         fontWeight: "bold",
         color: COLORS.primary
     },
     inputField: {
-        backgroundColor: "#ededed",
         height: 50,
-        borderRadius: 10,
-        paddingHorizontal: 12
+        flex: 1,
     },
     inputContainer: {
-        flex: 1,
         gap: 20,
-        padding: 20,
-        paddingTop: 30,
-    }
-
+        padding: 10,
+        marginTop: 12
+    },
+    inputBox: {
+        flexDirection: 'row',
+        gap: 10,
+        alignItems: 'center',
+        backgroundColor: "#ededed",
+        borderRadius: 25,
+        paddingHorizontal: 15,
+    },
+    signUpButton: {
+        height: 50,
+        borderRadius: 25,
+        backgroundColor: COLORS.primary,
+        alignItems: 'center',
+        justifyContent: 'center',
+        marginTop:8
+    },
+    signUpText:{
+        color: '#fff', 
+        fontWeight: 'bold', 
+        fontSize: 16
+    },
+    dtHvAcc:{
+        flexDirection: 'row',
+        paddingHorizontal:10,
+        justifyContent:'center'
+    },
 });
 
 export default Login;
