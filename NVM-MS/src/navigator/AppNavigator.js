@@ -5,6 +5,7 @@ import HomeScreen from '../screens/common/Home'
 import Login from '../screens/common/Login';
 import Registration from '../screens/common/Registration';
 import TeachersList from '../screens/principal/TeachersList';
+import AddTeacher from '../screens/principal/AddTeacher';
 const Stack = createStackNavigator();
 
 const AppNavigator = () => {
@@ -14,6 +15,7 @@ const AppNavigator = () => {
       <Stack.Screen name="Home" component={HomeScreen} />
       <Stack.Screen name="Registration" component={Registration} options={{headerShown:false}} />
       <Stack.Screen name="Teachers" component={TeachersList}  options={{headerShown:false}}  />
+      <Stack.Screen name="AddTeachers" component={AddTeacher}  options={{headerShown:false}}  />
 
     </Stack.Navigator>
   )

@@ -5,12 +5,12 @@ import { COLORS, customStyle } from '../../custom/styles';
 import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
 import CustomTextAndInput from '../../customComponents/CustomTextAndInput';
 const Tab = createMaterialTopTabNavigator();
-
+import AntDesign from '@expo/vector-icons/AntDesign';
 const TeachersList = ({ navigation }) => {
   const [searchActive, setSearchActive] = useState(false);
   const [searchText, setSearchText] = useState(false);
   const [sciTeachersList, setSciTeachersList] = useState([
-   
+
     {
       "id": 2,
       "fullName": "Amit Sharma",
@@ -54,7 +54,7 @@ const TeachersList = ({ navigation }) => {
   ]
   );
   const [comTeachersList, setComTeachersList] = useState([
-   
+
     {
       "id": 3,
       "fullName": "Neha Patel",
@@ -71,7 +71,7 @@ const TeachersList = ({ navigation }) => {
       "faculty": "Commerce",
       "phoneNumber": "9234567890"
     },
-   
+
     {
       "id": 9,
       "fullName": "Shivam Gupta",
@@ -139,9 +139,9 @@ const TeachersList = ({ navigation }) => {
       "faculty": "Arts",
       "phoneNumber": "9786123456"
     },
-  
+
   ]
-  )
+  );
   const handlesubmit = () => {
 
   };
@@ -153,9 +153,9 @@ const TeachersList = ({ navigation }) => {
   const renderItems = ({ item }) => {
     return (
       <TouchableOpacity style={styles.itemContainer}>
-        <Image source={{ uri: "https://inventorymanagementdev.s3.us-east-1.amazonaws.com/defaultProfileImage.jpg" }} height={80} width={80} style={styles.image} />
-        <View style={{flex:1}}>
-         <CustomTextAndInput type="text" style={{fontSize:18}}>{item.fullName}</CustomTextAndInput>
+        <Image source={{ uri: "https://inventorymanagementdev.s3.us-east-1.amazonaws.com/defaultProfileImage.jpg" }} height={70} width={70} style={styles.image} />
+        <View style={{ flex: 1 }}>
+          <CustomTextAndInput type="text" style={{ fontSize: 18 }}>{item.fullName}</CustomTextAndInput>
           <View>
             <CustomTextAndInput type="text">Class: {item.class} {item.division}</CustomTextAndInput>
             <CustomTextAndInput type="text">Phone: {item.phoneNumber}</CustomTextAndInput>
@@ -177,6 +177,7 @@ const TeachersList = ({ navigation }) => {
         navigation={navigation}
         labelText="Teachers"
         placeholderText="search teachers"
+        search={true}
       />
 
       <Tab.Navigator
@@ -191,7 +192,7 @@ const TeachersList = ({ navigation }) => {
                 backgroundColor: focused ? COLORS.primary : "#ffffff",
                 padding: 10,
                 borderRadius: 10,
-                paddingHorizontal: 20,
+                paddingHorizontal: 10,
                 flex: 1
               }}>
               <CustomTextAndInput type="text" style={[styles.label, { color: focused ? "#ffffff" : "#292929" }]}>{route.name}</CustomTextAndInput>
@@ -201,37 +202,50 @@ const TeachersList = ({ navigation }) => {
 
         <Tab.Screen name="Science">
           {() => (
-        
-              <FlatList
-                data={sciTeachersList}
-                renderItem={renderItems}
-                showsVerticalScrollIndicator={false}
-                contentContainerStyle={styles.flatlistStyle}
-              />
+    <View style={{flex:1,backgroundColor:"#FFF"}}>
+            <FlatList
+              data={sciTeachersList}
+              renderItem={renderItems}
+              showsVerticalScrollIndicator={false}
+              keyExtractor={(item) => item.id.toString()}
+              contentContainerStyle={styles.flatlistStyle}
+              ListFooterComponent={<View style={{ height: 70 }} />}
+            />
+            </View>
 
 
           )}
         </Tab.Screen>
         <Tab.Screen name="Commerce">
           {() => (
-              <FlatList
-                data={comTeachersList}
-                renderItem={renderItems}
-                showsVerticalScrollIndicator={false}
-                contentContainerStyle={styles.flatlistStyle}
-              />)}
+            <View style={{flex:1,backgroundColor:"#FFF"}}>
+               <FlatList
+              data={comTeachersList}
+              renderItem={renderItems}
+              showsVerticalScrollIndicator={false}
+              keyExtractor={(item) => item.id.toString()}
+              contentContainerStyle={styles.flatlistStyle}
+              ListFooterComponent={<View style={{ height: 70 }} />}
+            />
+            </View>
+           )}
         </Tab.Screen>
         <Tab.Screen name="Arts">
           {() => (
-    
-              <FlatList
-                data={artsTeachersList}
-                renderItem={renderItems}
-                showsVerticalScrollIndicator={false}
-                contentContainerStyle={styles.flatlistStyle}
-              />)}
+            <View style={{flex:1,backgroundColor:"#FFF"}}>
+            <FlatList
+              data={artsTeachersList}
+              renderItem={renderItems}
+              showsVerticalScrollIndicator={false}
+              keyExtractor={(item) => item.id.toString()}
+              contentContainerStyle={styles.flatlistStyle}
+              ListFooterComponent={<View style={{ height: 70 }} />}
+            /></View>)}
         </Tab.Screen>
       </Tab.Navigator>
+      <TouchableOpacity style={styles.addIcon} onPress={()=> navigation.navigate("AddTeachers")}>
+        <AntDesign name="pluscircle" size={64} color={COLORS.primary} />
+      </TouchableOpacity>
     </SafeAreaView>
   )
 }
@@ -240,22 +254,28 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     padding: 10,
     borderWidth: 0.5,
-    borderColor:"#B8BEC6",
-    gap:20,
-    backgroundColor:"#FAFBFD",
-    alignItems:"center",
-    borderRadius:10,
+    borderColor: "#B8BEC6",
+    gap: 20,
+    backgroundColor: "#FAFBFD",
+    alignItems: "center",
+    borderRadius: 10,
   },
   flatlistStyle: {
     gap: 10,
     padding: 12,
-    backgroundColor:"#FFFFFF",
-    paddingTop:20,
-    flex:1,
+    backgroundColor: "#FFFFFF",
+    paddingTop: 20,
+   
   },
-  image:{
-    borderRadius:50
+  image: {
+    borderRadius: 50
+  },
+  addIcon:{
+    position:'absolute',
+    right:'10%',
+    bottom:'5%'
+
   }
-});
+}); 
 
 export default TeachersList;

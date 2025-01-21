@@ -1,5 +1,5 @@
 import React from 'react'
-import { StyleSheet, TouchableOpacity, View } from 'react-native';
+import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { Entypo, EvilIcons, SimpleLineIcons } from '@expo/vector-icons';
 import CustomTextAndInput from "./CustomTextAndInput"
 
@@ -12,7 +12,8 @@ const CustomSearchBar = ({
   setSearchActive,
   navigation,
   labelText,
-  placeholderText
+  placeholderText,
+  search
 }) => {
   return (
     <View style={styles.topBar}>
@@ -31,6 +32,7 @@ const CustomSearchBar = ({
           onSubmitEditing={(e) => handlesubmit(e)}
         />
       ) : (
+    
         <CustomTextAndInput type="text" style={styles.title}>{labelText}</CustomTextAndInput>
       )}
       {searchActive ? (<TouchableOpacity onPress={() => {
@@ -42,15 +44,21 @@ const CustomSearchBar = ({
         <View >
           <CustomTextAndInput type="text" style={styles.filter}><EvilIcons name="close" size={24} color="#ffffff" /></CustomTextAndInput>
         </View>
-      </TouchableOpacity>) :
-        (<TouchableOpacity onPress={() => {
-          setSearchActive(!searchActive);
-        }
-        }>
-          <View >
-            <CustomTextAndInput type="text" style={styles.filter}><SimpleLineIcons name="magnifier" size={24} color="#ffffff" /></CustomTextAndInput>
-          </View>
-        </TouchableOpacity>)}
+      </TouchableOpacity>) :(
+          search ?(
+            <TouchableOpacity onPress={() => {
+              setSearchActive(!searchActive);
+            }
+            }>
+    
+              <View >
+                <CustomTextAndInput type="text" style={styles.filter}><SimpleLineIcons name="magnifier" size={24} color="#ffffff" /></CustomTextAndInput>
+              </View>
+            </TouchableOpacity>):(
+              <Text></Text>
+            )
+          
+          )}
     </View>
   )
 }
