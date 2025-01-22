@@ -85,7 +85,7 @@ const SubjectwiseResult = ({ navigation }) => {
         return(
 
             <View style={styles.detailsCard}>
-    
+            
                 <View style={{ padding: 10 }}>
                     <CustomTextAndInput type="text" > Sub : {item.sub}</CustomTextAndInput>
                     <CustomTextAndInput type="text"> Teacher : {item.teacher}</CustomTextAndInput>
