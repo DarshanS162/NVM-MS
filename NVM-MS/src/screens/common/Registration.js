@@ -1,15 +1,15 @@
 import React, { useState } from 'react';
-import { SafeAreaView, StyleSheet, Platform, StatusBar, Image, View, TextInput, TouchableOpacity, Text } from 'react-native';
+import { SafeAreaView, StyleSheet, Image, View, TouchableOpacity, ScrollView } from 'react-native';
 import { customStyle, COLORS } from '../../custom/styles';
 import RegisterImage from "../../../assets/register.png"
 import CustomTextAndInput from "../../customComponents/CustomTextAndInput"
-import { Ionicons, SimpleLineIcons,FontAwesome} from '@expo/vector-icons';
+import { Ionicons, SimpleLineIcons} from '@expo/vector-icons';
 
 const Registration = ({ navigation }) => {
     const [text, onChangeText] = useState('');
     return (
         <SafeAreaView style={customStyle.container}>
-            <View style={{ padding: 20, flex: 1 }}>
+            <ScrollView style={{ padding: 20, flex: 1 }}>
                 <View style={styles.imageContainer}>
                     <Image source={RegisterImage} style={styles.image} />
                 </View>
@@ -43,7 +43,7 @@ const Registration = ({ navigation }) => {
                         </TouchableOpacity>
                     </View>
                 </View>
-            </View>
+            </ScrollView>
         </SafeAreaView>
     );
 };

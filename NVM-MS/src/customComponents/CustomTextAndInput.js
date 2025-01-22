@@ -19,7 +19,7 @@ const CustomTextAndInput = ({ type, children, fontStyle = 'regular', placeholder
   if (type === 'text') {
     // Render Text Component
     return (
-      <Text style={[{ fontFamily: fontStyle === 'bold' ? 'Montserrat-Bold' : 'Montserrat-Regular' }, style]}>
+      <Text style={[{ fontFamily: fontStyle === 'bold' ? 'Montserrat-Bold' : 'Montserrat-Regular',fontSize:16 }, style]}>
         {children}
       </Text>
     );
