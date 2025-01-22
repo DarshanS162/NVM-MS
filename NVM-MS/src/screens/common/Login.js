@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { SafeAreaView, StyleSheet, Platform, StatusBar, Image, View, TextInput, TouchableOpacity, Text } from 'react-native';
+import { SafeAreaView, StyleSheet, Platform, StatusBar, Image, View, TextInput, TouchableOpacity, Text, ScrollView } from 'react-native';
 import { customStyle, COLORS } from '../../custom/styles';
 import loginImage from "../../../assets/login.png"
 import CustomTextAndInput from "../../customComponents/CustomTextAndInput"
@@ -9,7 +9,7 @@ const Login = ( {navigation}) => {
     const [text, onChangeText] = useState('');
     return (
         <SafeAreaView style={customStyle.container}>
-            <View style={{ padding: 20, flex: 1 }}>
+            <ScrollView style={{ padding: 20, flex: 1 }}>
                 <View style={styles.imageContainer}>
                     <Image source={loginImage} style={styles.image} />
                 </View>
@@ -27,7 +27,7 @@ const Login = ( {navigation}) => {
                         <CustomTextAndInput type="input" style={styles.inputField} placeholder='Enter Password' />
                     </View>
 
-                    <TouchableOpacity style={styles.signUpButton} onPress={ () => {navigation.navigate('Teachers')}}>
+                    <TouchableOpacity style={styles.signUpButton} onPress={ () => {navigation.navigate('SubjectwiseResult')}}>
                         <CustomTextAndInput type="text" style={styles.signUpText}>Sign in</CustomTextAndInput>
                     </TouchableOpacity>
 
@@ -38,7 +38,7 @@ const Login = ( {navigation}) => {
                         </TouchableOpacity>
                     </View>
                 </View>
-            </View>
+            </ScrollView>
         </SafeAreaView>
     );
 };
