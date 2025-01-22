@@ -4,8 +4,9 @@ import { Platform, StatusBar, StyleSheet } from 'react-native';
 const COLORS = {
   primary: '#8569F4',
   secondary: '#2ecc71',
-  background: '#ffffff',
+  background: '#FAFBFD',
   text: '#333333',
+  primaryBorder:'#B8BEC6'
 };
 
 const FONTS = {
