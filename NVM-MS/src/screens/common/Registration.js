@@ -8,7 +8,7 @@ import { Ionicons, SimpleLineIcons} from '@expo/vector-icons';
 const Registration = ({ navigation }) => {
     const [text, onChangeText] = useState('');
     return (
-        <SafeAreaView style={customStyle.container}>
+        <SafeAreaView>
             <ScrollView style={{ padding: 20, flex: 1 }}>
                 <View style={styles.imageContainer}>
                     <Image source={RegisterImage} style={styles.image} />
