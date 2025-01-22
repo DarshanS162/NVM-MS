@@ -19,17 +19,17 @@ const Registration = ({ navigation }) => {
                 <View style={styles.inputContainer}>
                     <View style={styles.inputBox}>
                         <Ionicons name="mail-outline" size={25} color="#292929" />
-                        <CustomTextAndInput type="input" style={styles.inputField} placeholder='Enter Email' onChangeText={onChangeText} value={text} />
+                        <CustomTextAndInput type="input" style={styles.inputField}  keyboardType="email-address" placeholder='Enter Email' onChangeText={onChangeText} value={text} />
                     </View>
 
                     <View style={styles.inputBox}>
                     <SimpleLineIcons name="phone" size={24} color="black" />
-                        <CustomTextAndInput type="input" style={styles.inputField} placeholder='Enter Mobile Number' onChangeText={onChangeText} value={text} />
+                        <CustomTextAndInput type="input" style={styles.inputField} keyboardType="phone-pad" placeholder='Enter Mobile Number' onChangeText={onChangeText} value={text} />
                     </View>
 
                     <View style={styles.inputBox}>
                         <SimpleLineIcons name="lock" size={24} color="#292929" />
-                        <CustomTextAndInput type="input" style={styles.inputField} placeholder='Enter Password' />
+                        <CustomTextAndInput type="input" style={styles.inputField} keyboardType="visible-password" placeholder='Enter Password' />
                     </View>
 
                     <TouchableOpacity style={styles.signUpButton}>
