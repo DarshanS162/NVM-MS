@@ -1,26 +1,27 @@
-import { View, Text, TouchableOpacity } from 'react-native'
+import { View, Text, TouchableOpacity, SafeAreaView } from 'react-native'
 import React from 'react'
+import { customStyle } from '../../custom/styles'
 
-const Home = () => {
+const Home = ({navigation}) => {
   return (
-    <View>
-      <TouchableOpacity>
-        <Text>
+    <SafeAreaView style={customStyle.container}>
+      <TouchableOpacity onPress={()=>navigation.navigate("Teachers")}>
+        <Text style={{fontFamily:"Montserrat-Regular"}}>
           teacher
         </Text>
       </TouchableOpacity>
-      <TouchableOpacity>
+      <TouchableOpacity onPress={()=>navigation.navigate("ExamScreen")}>
         <Text>
           Ranks
         </Text>
       </TouchableOpacity>
-      <TouchableOpacity>
+      <TouchableOpacity onPress={()=>navigation.navigate("ExamScreen")}>
         <Text>
           Terms
         </Text>
       </TouchableOpacity>
-    </View>
+    </SafeAreaView>
   )
-}
+};
 
-export default Home
+export default Home;

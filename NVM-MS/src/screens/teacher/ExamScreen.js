@@ -1,8 +1,7 @@
-import { View, SafeAreaView, StyleSheet, TouchableOpacity } from 'react-native'
+import { View, SafeAreaView, StyleSheet, TouchableOpacity, Text } from 'react-native'
 import React, { useState } from 'react'
 import { COLORS, customStyle } from '../../custom/styles'
 import CustomSearchBar from '../../customComponents/CustomSearchBar'
-import CustomTextAndInput from '../../customComponents/CustomTextAndInput'
 import FontAwesome from '@expo/vector-icons/FontAwesome';
 import CustomDatePicker from '../../customComponents/CustomDatePicker'
 
@@ -26,25 +25,25 @@ const ExamScreen = ({ navigation }) => {
 
             <View style={styles.mainConatainer}>
                 <View style={styles.examYear}>
-                    <CustomTextAndInput type="text" style={{ fontSize: 18 }}> Examination Year : {selectedYear} - {Number(selectedYear)+1} </CustomTextAndInput>
+                    <Text style={{ fontSize: 18, fontFamily:"Montserrat-Regular"}}> Examination Year : {selectedYear} - {Number(selectedYear)+1} </Text>
                     <TouchableOpacity onPress={() =>{setShowYear(true)} }><FontAwesome name="calendar" size={20} color="black" /></TouchableOpacity>
                 </View>
 
                 <View style={{ gap: 20, paddingHorizontal: 12, marginTop: 20 }}>
                     <TouchableOpacity style={styles.termsButton} onPress={()=> navigation.navigate('SubjectwiseResult')}>
-                        <CustomTextAndInput type="text">Unit I</CustomTextAndInput>
+                        <Text style={{fontFamily:"Montserrat-Regular"}}>Unit I</Text>
                     </TouchableOpacity>
 
                     <TouchableOpacity style={styles.termsButton} onPress={()=> navigation.navigate('SubjectwiseResult')}>
-                        <CustomTextAndInput type="text">Semister I</CustomTextAndInput>
+                        <Text style={{fontFamily:"Montserrat-Regular"}}>Semister I</Text>
                     </TouchableOpacity>
 
                     <TouchableOpacity style={styles.termsButton} onPress={()=> navigation.navigate('SubjectwiseResult')}>
-                        <CustomTextAndInput type="text">Unit II</CustomTextAndInput>
+                        <Text style={{fontFamily:"Montserrat-Regular"}}>Unit II</Text>
                     </TouchableOpacity>
 
                     <TouchableOpacity style={styles.termsButton} onPress={()=> navigation.navigate('SubjectwiseResult')}>
-                        <CustomTextAndInput type="text">Semister II</CustomTextAndInput>
+                        <Text style={{fontFamily:"Montserrat-Regular"}}>Semister II</Text>
                     </TouchableOpacity>
                 </View>
             </View>

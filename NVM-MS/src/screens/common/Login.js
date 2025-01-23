@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import { SafeAreaView, StyleSheet, Platform, StatusBar, Image, View, TextInput, TouchableOpacity, Text, ScrollView } from 'react-native';
 import { customStyle, COLORS } from '../../custom/styles';
-import loginImage from "../../../assets/login.png"
-import CustomTextAndInput from "../../customComponents/CustomTextAndInput"
+import loginImage from "../../../assets/login.png";
 import { Ionicons, SimpleLineIcons } from '@expo/vector-icons';
 
 const Login = ( {navigation}) => {
@@ -14,27 +13,27 @@ const Login = ( {navigation}) => {
                     <Image source={loginImage} style={styles.image} />
                 </View>
                 
-                <CustomTextAndInput type="text" style={styles.loginText}>Login</CustomTextAndInput>
-                <CustomTextAndInput type="text">Please Sign in to continue</CustomTextAndInput>
+                <Text  style={styles.loginText}>Login</Text>
+                <Text style={{fontFamily:"Montserrat-Regular"}}>Please Sign in to continue</Text>
                 <View style={styles.inputContainer}>
                     <View style={styles.inputBox}>
                         <Ionicons name="mail-outline" size={25} color="#292929" />
-                        <CustomTextAndInput type="input" style={styles.inputField} placeholder='Enter Email' keyboardType="email-address" onChangeText={onChangeText} value={text} />
+                        <TextInput  style={styles.inputField} placeholder='Enter Email' keyboardType="email-address" onChangeText={onChangeText} value={text} />
                     </View>
 
                     <View style={styles.inputBox}>
                         <SimpleLineIcons name="lock" size={24} color="black" />
-                        <CustomTextAndInput type="input" style={styles.inputField} keyboardType="visible-password" placeholder='Enter Password' />
+                        <TextInput style={styles.inputField} keyboardType="visible-password" placeholder='Enter Password' />
                     </View>
 
-                    <TouchableOpacity style={styles.signUpButton} onPress={ () => {navigation.navigate('SubjectwiseResult')}}>
-                        <CustomTextAndInput type="text" style={styles.signUpText}>Sign in</CustomTextAndInput>
+                    <TouchableOpacity style={styles.signUpButton} onPress={ () => {navigation.navigate('Home')}}>
+                        <Text style={styles.signUpText}>Sign in</Text>
                     </TouchableOpacity>
 
                     <View style={styles.dtHvAcc}>
-                        <CustomTextAndInput type="text">Don't have account? </CustomTextAndInput>
+                        <Text style={{fontFamily:"Montserrat-Regular"}}>Don't have account? </Text>
                         <TouchableOpacity onPress={ () => {navigation.navigate('Registration')}}>
-                            <CustomTextAndInput type='text' style={{ fontSize: 14, fontWeight: 'bold' }}>Sign up</CustomTextAndInput>
+                            <Text style={{ fontSize: 14, fontWeight: 'bold' ,fontFamily:"Montserrat-Regular"}}>Sign up</Text>
                         </TouchableOpacity>
                     </View>
                 </View>
@@ -56,11 +55,13 @@ const styles = StyleSheet.create({
     loginText: {
         fontSize: 30,
         fontWeight: "bold",
-        color: COLORS.primary
+        color: COLORS.primary,
+        fontFamily:"Montserrat-Regular"
     },
     inputField: {
         height: 50,
         flex: 1,
+        fontFamily:"Montserrat-Regular"
     },
     inputContainer: {
         gap: 20,
@@ -86,7 +87,8 @@ const styles = StyleSheet.create({
     signUpText:{
         color: '#fff', 
         fontWeight: 'bold', 
-        fontSize: 16
+        fontSize: 16,
+        fontFamily:"Montserrat-Regular"
     },
     dtHvAcc:{
         flexDirection: 'row',

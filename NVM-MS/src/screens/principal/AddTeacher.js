@@ -1,12 +1,10 @@
-import { View, SafeAreaView, StyleSheet, Image, TouchableOpacity, ScrollView } from 'react-native'
+import { View, SafeAreaView, StyleSheet, Image, TouchableOpacity, ScrollView, Text, TextInput } from 'react-native'
 import React, { useState } from 'react'
 import CustomSearchBar from '../../customComponents/CustomSearchBar';
 import { COLORS, customStyle } from '../../custom/styles';
-import CustomTextAndInput from '../../customComponents/CustomTextAndInput';
 import * as ImagePicker from "expo-image-picker";
 import { Dropdown } from 'react-native-element-dropdown';
-import { AntDesign } from "@expo/vector-icons";
-import { useFonts } from 'expo-font';
+
 const AddTeacher = ({ navigation }) => {
     const [teacherData, setTeacherData] = useState({
         fullName: "",
@@ -17,9 +15,6 @@ const AddTeacher = ({ navigation }) => {
         phone: ""
     });
     const [faculty, setFaculty] = useState("");
-    const [fontsLoaded] = useFonts({
-        'Montserrat-Regular': require('../../custom/fonts/Montserrat-Regular.ttf'),
-    });
 
     const [image, setImage] = useState("https://inventorymanagementdev.s3.us-east-1.amazonaws.com/defaultProfileImage.jpg");
     const data = [
@@ -58,33 +53,32 @@ const AddTeacher = ({ navigation }) => {
                 <View style={styles.innerContainer}>
 
                     <TouchableOpacity style={{ alignSelf: "center", gap: 10 }} onPress={handleImageUpload}>
-                        <CustomTextAndInput style={{ alignSelf: "center", fontSize: 18 }} type="text">Profile Photo</CustomTextAndInput>
+                        <Text style={{ alignSelf: "center", fontSize: 18 ,fontFamily:"Montserrat-Regular"}}>Profile Photo</Text>
                         <Image source={{ uri: image }}
                             height={150} width={150} style={styles.image} />
                     </TouchableOpacity>
 
                     <View style={styles.singleInput}>
-                        <CustomTextAndInput type="text" style={styles.label}>Full Name</CustomTextAndInput>
-                        <CustomTextAndInput style={styles.input} type="input" placeholder='Eg. Darshan Devidas Salunkhe 'value={teacherData.fullName}
+                        <Text style={styles.label}>Full Name</Text>
+                        <TextInput style={styles.input}  placeholder='Eg. Darshan Devidas Salunkhe 'value={teacherData.fullName}
                             onChangeText={(text) => handleInputChange('fullName', text)} />
                     </View>
                     <View style={styles.twoInput}>
-
                         <View style={styles.labelInput}>
-                            <CustomTextAndInput type="text" style={styles.label}>Class</CustomTextAndInput>
-                            <CustomTextAndInput style={styles.input} type="input" placeholder='Eg. 12'value={teacherData.class}
+                            <Text style={styles.label}>Class</Text>
+                            <TextInput style={styles.input} placeholder='Eg. 12'value={teacherData.class}
                             onChangeText={(text) => handleInputChange('class', text)}/>
                         </View>
 
                         <View style={styles.labelInput}>
-                            <CustomTextAndInput type="text" style={styles.label}>Division</CustomTextAndInput>
-                            <CustomTextAndInput style={styles.input} type="input" placeholder='Eg. A' value={teacherData.div}
+                            <Text style={styles.label}>Division</Text>
+                            <TextInput style={styles.input} placeholder='Eg. A' value={teacherData.div}
                             onChangeText={(text) => handleInputChange('div', text)}/>
                         </View>
 
                     </View>
                     <View style={styles.singleInput}>
-                        <CustomTextAndInput type="text" style={styles.label}>Faculty</CustomTextAndInput>
+                        <Text style={styles.label}>Faculty</Text>
                         <Dropdown
                             data={data}
                             maxHeight={300}
@@ -99,19 +93,19 @@ const AddTeacher = ({ navigation }) => {
                         />
                     </View>
                     <View style={styles.singleInput}>
-                        <CustomTextAndInput type="text" style={styles.label}>Email Id</CustomTextAndInput>
-                        <CustomTextAndInput value={teacherData.email}
-                            onChangeText={(text) => handleInputChange('email', text)} style={styles.input} type="input" keyboardType="email-address" placeholder='Eg. Eample@gmail.com'  />
+                        <Text style={styles.label}>Email Id</Text>
+                        <TextInput value={teacherData.email}
+                            onChangeText={(text) => handleInputChange('email', text)} style={styles.input} keyboardType="email-address" placeholder='Eg. Eample@gmail.com'  />
                     </View>
                     <View style={styles.singleInput}>
-                        <CustomTextAndInput type="text" style={styles.label}>Phone Number</CustomTextAndInput>
-                        <CustomTextAndInput value={teacherData.phone}
-                            onChangeText={(text) => handleInputChange('phone', text)}  style={styles.input} type="input" keyboardType="phone-pad" placeholder='Eg. 9638527410' />
+                        <Text style={styles.label}>Phone Number</Text>
+                        <TextInput value={teacherData.phone}
+                            onChangeText={(text) => handleInputChange('phone', text)}  style={styles.input} keyboardType="phone-pad" placeholder='Eg. 9638527410' />
                     </View>
 
 
                     <TouchableOpacity style={styles.saveButton}>
-                        <CustomTextAndInput type="text" style={styles.saveButtonText}>Save</CustomTextAndInput>
+                        <Text style={styles.saveButtonText}>Save</Text>
                     </TouchableOpacity>
                 </View>
             </ScrollView>
@@ -136,6 +130,7 @@ const styles = StyleSheet.create({
     },
     label: {
         fontSize: 18,
+        fontFamily:"Montserrat-Regular",
     },
     input: {
         backgroundColor: COLORS.background,
@@ -143,6 +138,7 @@ const styles = StyleSheet.create({
         borderWidth: 0.5,
         borderColor: COLORS.primaryBorder,
         paddingLeft: 10,
+        fontFamily:"Montserrat-Regular",
     },
     saveButton: {
         backgroundColor: COLORS.primary,
@@ -154,7 +150,8 @@ const styles = StyleSheet.create({
     },
     saveButtonText: {
         fontSize: 20,
-        color: "#fff"
+        color: "#fff",
+        fontFamily:"Montserrat-Regular"
     },
     placeholderStyle: {
         color: "#8e8e8e",

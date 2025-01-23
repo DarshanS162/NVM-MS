@@ -3,7 +3,6 @@ import React, { useState } from 'react'
 import CustomSearchBar from '../../customComponents/CustomSearchBar'
 import { COLORS, customStyle } from '../../custom/styles';
 import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
-import CustomTextAndInput from '../../customComponents/CustomTextAndInput';
 const Tab = createMaterialTopTabNavigator();
 import AntDesign from '@expo/vector-icons/AntDesign';
 const TeachersList = ({ navigation }) => {
@@ -155,10 +154,10 @@ const TeachersList = ({ navigation }) => {
       <TouchableOpacity style={styles.itemContainer}>
         <Image source={{ uri: "https://inventorymanagementdev.s3.us-east-1.amazonaws.com/defaultProfileImage.jpg" }} height={70} width={70} style={styles.image} />
         <View style={{ flex: 1 }}>
-          <CustomTextAndInput type="text" style={{ fontSize: 18 }}>{item.fullName}</CustomTextAndInput>
+          <Text style={{ fontSize: 18,fontFamily:"Montserrat-Regular" }}>{item.fullName}</Text>
           <View>
-            <CustomTextAndInput type="text">Class: {item.class} {item.division}</CustomTextAndInput>
-            <CustomTextAndInput type="text">Phone: {item.phoneNumber}</CustomTextAndInput>
+            <Text style={{fontFamily:"Montserrat-Regular"}} >Class: {item.class} {item.division}</Text>
+            <Text style={{fontFamily:"Montserrat-Regular"}}>Phone: {item.phoneNumber}</Text>
           </View>
         </View>
       </TouchableOpacity>
@@ -195,7 +194,7 @@ const TeachersList = ({ navigation }) => {
                 paddingHorizontal: 10,
                 flex: 1
               }}>
-              <CustomTextAndInput type="text" style={[styles.label, { color: focused ? "#ffffff" : "#292929" }]}>{route.name}</CustomTextAndInput>
+              <Text style={[styles.label, { color: focused ? "#ffffff" : "#292929" ,fontFamily:"Montserrat-Regular"}]}>{route.name}</Text>
             </View>
           ),
         })}>

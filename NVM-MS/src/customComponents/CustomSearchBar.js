@@ -1,7 +1,6 @@
 import React from 'react'
-import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { StyleSheet, Text, TouchableOpacity, View, TextInput} from 'react-native';
 import { Entypo, EvilIcons, SimpleLineIcons } from '@expo/vector-icons';
-import CustomTextAndInput from "./CustomTextAndInput"
 
 const CustomSearchBar = ({
   searchActive,
@@ -21,8 +20,7 @@ const CustomSearchBar = ({
         <Entypo name="chevron-thin-left" size={24} color="#ffffff" />
       </TouchableOpacity>
       {searchActive ? (
-        <CustomTextAndInput
-        type="input"
+        <TextInput
           style={styles.searchInput}
           placeholder={placeholderText || "Search..."}
           value={searchText}
@@ -33,7 +31,7 @@ const CustomSearchBar = ({
         />
       ) : (
     
-        <CustomTextAndInput type="text" style={styles.title}>{labelText}</CustomTextAndInput>
+        <Text  style={styles.title}>{labelText}</Text>
       )}
       {searchActive ? (<TouchableOpacity onPress={() => {
         setSearchActive(!searchActive);
@@ -42,7 +40,7 @@ const CustomSearchBar = ({
 
       }}>
         <View >
-          <CustomTextAndInput type="text" style={styles.filter}><EvilIcons name="close" size={24} color="#ffffff" /></CustomTextAndInput>
+          <Text style={styles.filter}><EvilIcons name="close" size={24} color="#ffffff" /></Text>
         </View>
       </TouchableOpacity>) :(
           search ?(
@@ -52,7 +50,7 @@ const CustomSearchBar = ({
             }>
     
               <View >
-                <CustomTextAndInput type="text" style={styles.filter}><SimpleLineIcons name="magnifier" size={24} color="#ffffff" /></CustomTextAndInput>
+                <Text style={styles.filter}><SimpleLineIcons name="magnifier" size={24} color="#ffffff" /></Text>
               </View>
             </TouchableOpacity>):(
               <Text></Text>
@@ -74,7 +72,7 @@ const styles = StyleSheet.create({
   title: {
     color: "#ffffff",
     fontSize: 18,
-    fontFamily: "Montserrat-Regular", // Apply the font to inputs
+    fontFamily: "Montserrat-Regular", 
   },
   searchInput: {
     flex: 1,
@@ -82,6 +80,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
     marginHorizontal: 8,
     borderRadius: 4,
+    fontFamily:"Montserrat-Regular"
   },
 
 });

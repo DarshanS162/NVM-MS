@@ -1,8 +1,7 @@
-import { View, SafeAreaView, StyleSheet, TouchableOpacity } from 'react-native'
+import { View, SafeAreaView, StyleSheet, TouchableOpacity, Text } from 'react-native'
 import React, { useState } from 'react'
 import { COLORS, customStyle } from '../../custom/styles'
 import CustomSearchBar from '../../customComponents/CustomSearchBar'
-import CustomTextAndInput from '../../customComponents/CustomTextAndInput'
 import { FlatList } from 'react-native-gesture-handler'
 
 const SubjectwiseResult = ({ navigation }) => {
@@ -87,27 +86,27 @@ const SubjectwiseResult = ({ navigation }) => {
             <View style={styles.detailsCard}>
             
                 <View style={{ padding: 10 }}>
-                    <CustomTextAndInput type="text" > Sub : {item.sub}</CustomTextAndInput>
-                    <CustomTextAndInput type="text"> Teacher : {item.teacher}</CustomTextAndInput>
+                    <Text style={{fontFamily:"Montserrat-Regular"}} > Sub : {item.sub}</Text>
+                    <Text  style={{fontFamily:"Montserrat-Regular"}}> Teacher : {item.teacher}</Text>
                 </View>
     
                 <View style={styles.innerCard}>
-                    <CustomTextAndInput type="text" style={styles.innerCardText}> Total Students : {item.totalStudents}</CustomTextAndInput>
+                    <Text type="text" style={styles.innerCardText}> Total Students : {item.totalStudents}</Text>
                     <View style={styles.flexContainer}>
-                        <CustomTextAndInput type="text" style={styles.innerCardText}> Present : {item.present}</CustomTextAndInput>
-                        <CustomTextAndInput type="text" style={styles.innerCardText}> Absent : {item.absent}</CustomTextAndInput>
+                        <Text type="text" style={styles.innerCardText}> Present : {item.present}</Text>
+                        <Text type="text" style={styles.innerCardText}> Absent : {item.absent}</Text>
                     </View>
                     <View style={{ flexDirection: 'row',justifyContent:'space-between'}}>
-                        <CustomTextAndInput type="text" style={styles.innerCardText}> Passed : {item.passed}</CustomTextAndInput>
-                        <CustomTextAndInput type="text" style={styles.innerCardText}> Failed : {item.failed}</CustomTextAndInput>
+                        <Text type="text" style={styles.innerCardText}> Passed : {item.passed}</Text>
+                        <Text type="text" style={styles.innerCardText}> Failed : {item.failed}</Text>
                     </View>
-                    <CustomTextAndInput type="text" style={styles.innerCardText}> Highest Marks : {item.highestMarks}</CustomTextAndInput>
-                    <CustomTextAndInput type="text" style={styles.innerCardText}> Percentage : {item.percentage}% </CustomTextAndInput>
+                    <Text type="text" style={styles.innerCardText}> Highest Marks : {item.highestMarks}</Text>
+                    <Text type="text" style={styles.innerCardText}> Percentage : {item.percentage}% </Text>
     
                     <View style={{flexDirection:'row',justifyContent:'space-between'}}>
                         <View></View>
                         <TouchableOpacity style={styles.viewStudents}>
-                            <CustomTextAndInput type="text" style={{ color: '#fff',fontSize:14}}> View Students</CustomTextAndInput>
+                            <Text type="text" style={{ color: '#fff',fontSize:14,fontFamily:"Montserrat-Regular"}}> View Students</Text>
                         </TouchableOpacity>
                     </View>
     
@@ -150,7 +149,8 @@ const styles = StyleSheet.create({
         padding:10
     },
     innerCardText:{
-        fontSize:15
+        fontSize:15,
+        fontFamily:"Montserrat-Regular"
     },
     viewStudents: {
         borderRadius: 20,
