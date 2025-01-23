@@ -1,5 +1,4 @@
 import 'react-native-gesture-handler';
-import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View ,TextInput} from 'react-native';
 import AppNavigator from './src/navigator/AppNavigator';
 import { NavigationContainer } from '@react-navigation/native'; 
@@ -38,7 +37,6 @@ export default function App() {
    
   return (
     <>
-      <StatusBar style="auto" />
       <NavigationContainer>
         <AppNavigator />
       </NavigationContainer>
