@@ -22,7 +22,7 @@ import { COLORS } from '../custom/styles';
 function CustomDrawerContent(props) {
   return (
     <DrawerContentScrollView {...props}>
-      <DrawerItemList {...props} />
+      {/* <DrawerItemList {...props} /> */}
       <DrawerItem
         label="Dashboard"
         onPress={() => props.navigation.navigate("Home")}
@@ -39,7 +39,13 @@ const Drawer = createDrawerNavigator();
 
 function DrawerNavigator() {
   return (
+    <>
+    {/* Customizing the StatusBar */}
+    <StatusBar
+      barStyle="default" 
+    />
     <Drawer.Navigator
+      initialRouteName="NVM"
       drawerContent={(props) => <CustomDrawerContent {...props} />}
     >
       <Drawer.Screen
@@ -49,7 +55,7 @@ function DrawerNavigator() {
           headerTitleAlign: "center",
           headerLeft: () => (
             <TouchableOpacity onPress={() => navigation.openDrawer()}>
-              <SimpleLineIcons name="menu" size={22} color="black" />
+              <SimpleLineIcons name="menu" size={22} color="#fff" />
             </TouchableOpacity>
           ),
           headerLeftContainerStyle: {
@@ -57,7 +63,7 @@ function DrawerNavigator() {
           },
           headerRight: () => (
             <TouchableOpacity onPress={() => navigation.navigate("ExamScreen")}>
-              <EvilIcons name="bell" size={26} color="black" />
+              <EvilIcons name="bell" size={26} color="#fff" />
             </TouchableOpacity>
           ),
           headerRightContainerStyle: {
@@ -65,18 +71,19 @@ function DrawerNavigator() {
           },
           headerTitleStyle: {
             fontFamily: "Montserrat-Regular",
-            color: "#292929",
+            color: "#FFF",
             fontSize: 18,
             textTransform: "capitalize",
           },
           headerStyle: {
             backgroundColor: COLORS.primary,
+            height:45,
           },
-          headerStatusBarHeight: Platform.OS === "android" ? 0 : undefined,
         })}
       />
 
     </Drawer.Navigator>
+    </>
   );
 }
 const AppNavigator = () => {
