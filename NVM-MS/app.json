@@ -8,7 +8,7 @@
     "newArchEnabled": true,
     "splash": {
       "image": "./assets/splashScreen.png",
-      "resizeMode":"cover",
+      "resizeMode": "cover",
       "backgroundColor": "#8569F4"
     },
     "ios": {
@@ -19,10 +19,18 @@
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-      "permissions": ["CAMERA"]
+      "permissions": [
+        "CAMERA"
+      ],
+      "package": "com.darshan_162.NVMMS"
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "739676c2-a87a-4507-967f-23f2efdb1394"
+      }
     }
   }
 }
