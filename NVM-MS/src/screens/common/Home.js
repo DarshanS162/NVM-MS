@@ -7,13 +7,7 @@ import CustomSearchBar from '../../customComponents/CustomSearchBar';
 const Home = ({ navigation }) => {
   return (
     <SafeAreaView style={customStyle.container}>
-
-      <CustomSearchBar
-        navigation={navigation}
-        labelText="Dashboard"
-      />
-
-      <LinearGradient style={styles.teacherCard}
+      <LinearGradient  style={styles.teacherCard}
         colors={['#deb5e8', '#b9a8f8']}
         start={{ x: 0.9, y: 0.9 }}
         end={{ x: 0.2, y: 2 }}
