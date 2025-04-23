@@ -48,7 +48,6 @@ const CustomSearchBar = ({
               setSearchActive(!searchActive);
             }
             }>
-    
               <View >
                 <Text style={styles.filter}><SimpleLineIcons name="magnifier" size={24} color="#ffffff" /></Text>
               </View>

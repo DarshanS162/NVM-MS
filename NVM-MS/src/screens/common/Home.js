@@ -1,11 +1,35 @@
 import { View, Text, SafeAreaView, StyleSheet, Image, TouchableOpacity } from 'react-native';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { customStyle } from '../../custom/styles';
 import { LinearGradient } from 'expo-linear-gradient';
-import CustomSearchBar from '../../customComponents/CustomSearchBar';
 import { ScrollView } from 'react-native-gesture-handler';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import axios from 'axios';
+const baseUrl = `http://192.168.1.36:5000/app`;
 
 const Home = ({ navigation }) => {
+  const [teacherData, setTeacherData] = useState({});
+
+  useEffect(() => {
+    getUser();
+  }, []);
+
+  const getUser = async () => {
+    try {
+      const jsonValue = await AsyncStorage.getItem('user');
+      console.log("jsonValue......", jsonValue);
+      if (jsonValue !== null) {
+        const user = JSON.parse(jsonValue);
+        console.log(user);
+        console.log(`${baseUrl}/getTeacher/${user.teacher._id}`);
+        const response = await axios.get(`${baseUrl}/getTeacher/${user.teacher._id}`);
+        setTeacherData(response.data);
+      }
+    } catch (err) {
+      console.error('Failed to load user from AsyncStorage', err.message);
+    }
+  };
+
   return (
     <SafeAreaView style={customStyle.container}>
       <ScrollView>
@@ -16,8 +40,15 @@ const Home = ({ navigation }) => {
         >
           <View style={{ marginTop: 10, flexDirection: 'row', justifyContent: 'space-between' }}>
             <View>
-              <Text style={{ color: '#fff', fontSize: 18, marginBottom: 10 }}>Mr. Darshan Devidas Salunkhe</Text>
-              <Text style={{ color: '#fff', fontSize: 16, textAlign: 'left' }} >Class : 12th | Div : B</Text>
+              <View style={{ marginBottom: 10, flexDirection: 'row', alignItems: 'center', gap: 10 }}>
+                {teacherData.gender == 'Male' ? (<Text style={{ color: '#fff', fontSize: 18, marginBottom: 10 }}>Mr.</Text>) : 
+                teacherData.gender == 'Female' ? (<Text style={{ color: '#fff', fontSize: 18, marginBottom: 10 }}>Ms.</Text>) :
+                (<Text style={{ color: '#fff', fontSize: 18, marginBottom: 10 }}>Mx.</Text>)
+                }
+                <Text style={{ color: '#fff', fontSize: 18, marginBottom: 10 }}>{teacherData.fullName}</Text>
+              </View>
+
+              <Text style={{ color: '#fff', fontSize: 16, textAlign: 'left' }} >Class : {teacherData.class}  |  Div : {teacherData.div} </Text>
               <Text style={{ color: '#fff', fontSize: 16 }}>Faculty : Science</Text>
             </View>
             <View>
@@ -32,7 +63,7 @@ const Home = ({ navigation }) => {
           <View style={{ gap: 22 }}>
             <View style={{ flexDirection: 'row', justifyContent: 'space-evenly' }}>
               <TouchableOpacity style={{ backgroundColor: '#d0cfff', paddingHorizontal: 25, paddingVertical: 10, borderRadius: 20, alignItems: 'center', gap: 5 }}
-                onPress={() => navigation.navigate('Teachers')}>
+                onPress={() => navigation.navigate('StudentList')}>
                 <View style={{ borderRadius: 100, backgroundColor: '#fff', padding: 20 }}>
                   <Image
                     source={require('../../../assets/students.png')}
@@ -42,7 +73,8 @@ const Home = ({ navigation }) => {
                 <Text>Students</Text>
               </TouchableOpacity>
 
-              <TouchableOpacity style={{ backgroundColor: '#d0cfff', paddingHorizontal: 25, paddingVertical: 10, borderRadius: 20, alignItems: 'center', gap: 5 }}>
+              <TouchableOpacity style={{ backgroundColor: '#d0cfff', paddingHorizontal: 25, paddingVertical: 10, borderRadius: 20, alignItems: 'center', gap: 5 }}
+                onPress={() => navigation.navigate('Teachers')}>
                 <View style={{ borderRadius: 100, backgroundColor: '#fff', padding: 20 }}>
                   <Image
                     source={require('../../../assets/attendance.png')}
@@ -64,7 +96,8 @@ const Home = ({ navigation }) => {
                 <Text>Leaves</Text>
               </TouchableOpacity>
 
-              <TouchableOpacity style={{ backgroundColor: '#d0cfff', paddingHorizontal: 25, paddingVertical: 10, borderRadius: 20, alignItems: 'center', gap: 5 }}>
+              <TouchableOpacity style={{ backgroundColor: '#d0cfff', paddingHorizontal: 25, paddingVertical: 10, borderRadius: 20, alignItems: 'center', gap: 5 }}
+             >
                 <View style={{ borderRadius: 100, backgroundColor: '#fff', padding: 20 }}>
                   <Image
                     source={require('../../../assets/addMarks.png')}

@@ -49,7 +49,7 @@ const AddTeacher = ({ navigation }) => {
                 navigation={navigation}
                 labelText="Add Teachers"
             />
-            <ScrollView >
+            <ScrollView >   
                 <View style={styles.innerContainer}>
 
                     <TouchableOpacity style={{ alignSelf: "center", gap: 10 }} onPress={handleImageUpload}>

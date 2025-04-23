@@ -242,6 +242,7 @@ const TeachersList = ({ navigation }) => {
             /></View>)}
         </Tab.Screen>
       </Tab.Navigator>
+      
       <TouchableOpacity style={styles.addIcon} onPress={()=> navigation.navigate("AddTeachers")}>
         <AntDesign name="pluscircle" size={64} color={COLORS.primary} />
       </TouchableOpacity>
